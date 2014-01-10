@@ -16,6 +16,7 @@ namespace CoreModule
           Node outputNode = new Node(GetNodeName());
 
           NodeItem item = new NodeLabelItem("Output", true, false, new[] { typeof(ShaderTypes.float4) }, null);
+          item.Tag = "out";
           outputNode.AddItem(item);
           outputNode.ParentModule = this;
 

@@ -146,7 +146,17 @@ namespace ColorMixerNodeModule
        public object GetCompiledData(Node node)
        {
           ShaderNodeDataTypes.ShaderNode shaderNode = new ShaderNodeDataTypes.ShaderNode();
-          shaderNode.FunctionBodyString = "float4 {OUTPUT1_NAME} = lerp({VARIABLE1_NAME},{VARIABLE2_NAME},{VALUE}});";
+          //ShaderTypes.float3 f3 = (ShaderTypes.float3)node.Items.FirstOrDefault(item => item.Tag.Equals(3)).OutputData;
+          NodeItem item1 = node.Items.FirstOrDefault(item => item.Tag.Equals(1));
+          NodeItem item2 = node.Items.FirstOrDefault(item => item.Tag.Equals(2));
+          object f1 = node.Connections.FirstOrDefault(conn => conn.To == item1.Input).From.Item.OutputData;
+          object f2 = node.Connections.FirstOrDefault(conn => conn.To == item2.Input).From.Item.OutputData;
+          string variable1 = "{VARIABLE1_NAME}", variable2 = "{VARIABLE2_NAME}";
+          if (f1 is ShaderTypes.float3)
+             variable1 = "float4({VARIABLE1_NAME}, 1)";
+          if (f2 is ShaderTypes.float3)
+             variable2 = "float4({VARIABLE2_NAME}, 1)";
+          shaderNode.FunctionBodyString = "float4 {OUTPUT1_NAME} = lerp(" + variable1 + "," + variable2 + ",0.5);";
           return shaderNode;
        }
 

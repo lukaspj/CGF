@@ -178,7 +178,7 @@ namespace TextureNodeModule
       public object GetCompiledData(Node node)
       {
          ShaderNodeDataTypes.ShaderNode shaderNode = new ShaderNodeDataTypes.ShaderNode();
-         shaderNode.FunctionBodyString = "float4 {OUTPUT1_NAME} = lerp({VARIABLE1_NAME},{VARIABLE2_NAME},{VALUE}});";
+         shaderNode.FunctionBodyString = "float4 {OUTPUT1_NAME} = lerp({VARIABLE1_NAME},{VARIABLE2_NAME},{0.5}});";
          return shaderNode;
       }
 
