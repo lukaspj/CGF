@@ -59,7 +59,9 @@ namespace WLEShaderEditor
 
       private void CompileButton_Click(object sender, EventArgs e)
       {
-
+         GraphModel model = GraphModel.FromControls((List<Node>)graphControl.Nodes);
+         Compilers.Compiler compiler = new Compilers.HLSLCompiler();
+         compiler.Compile(new ProgramGraph(model));
       }
    }
 }

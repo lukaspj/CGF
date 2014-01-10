@@ -9,7 +9,8 @@ namespace ShaderModuleAPI
        string GetNodeName();
        string Serialize(Node node);
        Node Deserialize(string module);
-       bool IsAnOutputNode();
+       object GetCompiledData(Node node);
+       bool isMainInput();
        void HandleConnectionAdded(NodeConnection connection, bool input);
        void HandleConnectionRemoved(NodeConnector fromNodeConnector, NodeConnector toNodeConnector, bool input);
     }

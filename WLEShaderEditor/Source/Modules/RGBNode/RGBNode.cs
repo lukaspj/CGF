@@ -16,7 +16,10 @@ namespace RGBNodeModule
          var redChannel = new NodeSliderItem("R", 64.0f, 16.0f, 0, 1.0f, 0.0f, false, false) { Tag = "red" };
          var greenChannel = new NodeSliderItem("G", 64.0f, 16.0f, 0, 1.0f, 0.0f, false, false) { Tag = "green" };
          var blueChannel = new NodeSliderItem("B", 64.0f, 16.0f, 0, 1.0f, 0.0f, false, false) { Tag = "blue" };
-         var colorItem = new NodeColorItem("Color", Color.Black, false, true, null, new []{typeof(Color)}) { Tag = "out" };
+         var colorItem = new NodeColorItem("Color", Color.Black, false, true, null, new[] { 
+            typeof(ShaderTypes.float3), 
+            typeof(ShaderTypes.float4) }) 
+            { Tag = "out" };
 
          EventHandler<NodeItemEventArgs> channelChangedDelegate = delegate(object sender, NodeItemEventArgs args)
          {
@@ -71,8 +74,6 @@ namespace RGBNodeModule
       #endregion
 
       #region Serializing
-      public bool IsAnOutputNode() { return true; }
-
       public string Serialize(Node node)
       {
          NodeSliderItem redChannel, greenChannel, blueChannel;
@@ -109,6 +110,17 @@ namespace RGBNodeModule
 
          return node;
       }
+      #endregion
+
+      #region Compiling
+      public object GetCompiledData(Node node)
+      {
+         ShaderNodeDataTypes.InputNodeType shaderNode = new ShaderNodeDataTypes.InputNodeType();
+         shaderNode.FunctionBodyString = "const float4 {OUTPUT1_NAME} = {{VALUE1},{VALUE2},{VALUE3}};";
+         return shaderNode;
+      }
+
+      public bool isMainInput() { return false; }
       #endregion
    }
 }

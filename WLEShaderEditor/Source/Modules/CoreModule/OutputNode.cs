@@ -37,8 +37,6 @@ namespace CoreModule
        #endregion
 
        #region Serializing
-       public bool IsAnOutputNode() { return true; }
-
        public string Serialize(Node node)
        {
           return "";
@@ -50,5 +48,15 @@ namespace CoreModule
        }
        #endregion
 
+       #region Compiling
+       public object GetCompiledData(Node node)
+       {
+          ShaderNodeDataTypes.ShaderNode shaderNode = new ShaderNodeDataTypes.ShaderNode();
+          shaderNode.FunctionBodyString = "return {VARIABLE1_NAME};";
+          return shaderNode;
+       }
+
+       public bool isMainInput() { return false; }
+       #endregion
     }
 }

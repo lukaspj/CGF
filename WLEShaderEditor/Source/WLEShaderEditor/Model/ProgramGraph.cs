@@ -10,40 +10,10 @@ namespace WLEShaderEditor.Model
 {
    class ProgramGraph
    {
-      internal class Edge
-      {
-         public Vertex From;
-         public Vertex To;
-      }
-
-      internal class Vertex
-      {
-         private List<Edge> _edgesIn;
-         private List<Edge> _edgesOut;
-         public Node Data;
-         public int Depth;
-         public List<Edge> EdgesIn
-         {
-            get
-            {
-               if (_edgesIn == null)
-                  _edgesIn = new List<Edge>();
-               return _edgesIn;
-            }
-         }
-         public List<Edge> EdgesOut
-         {
-            get
-            {
-               if (_edgesOut == null)
-                  _edgesOut = new List<Edge>();
-               return _edgesOut;
-            }
-         }
-      }
-
       List<Vertex> Vertices;
       List<Edge> Edges;
+
+      private int maxDepth = 0;
 
       /// <summary>
       /// Initializes a new instance of the ProgramGraph class.
@@ -66,7 +36,9 @@ namespace WLEShaderEditor.Model
             Edge edge = new Edge()
             {
                From = vFrom,
-               To = vTo
+               FromItem = NC.From.Item,
+               To = vTo,
+               ToItem = NC.To.Item
             };
             vTo.EdgesIn.Add(edge);
             vFrom.EdgesOut.Add(edge);
@@ -101,7 +73,55 @@ namespace WLEShaderEditor.Model
             foreach (Edge e in v.EdgesIn)
                v.Depth = Math.Max(v.Depth, e.From.Depth + 1);
          foreach (Edge e in v.EdgesOut)
+         {
+            e.To.Depth = v.Depth + 1;
             CalculateDepthForVertex(e.To);
+         }
+         maxDepth = Math.Max(v.Depth, maxDepth);
+      }
+
+      public int getMaxDepth() { return maxDepth; }
+
+      public List<Vertex> getVerticesForLayer(int layer) {
+         List<Vertex> retList = new List<Vertex>();
+         foreach (Vertex v in Vertices)
+            if (v.Depth == layer)
+               retList.Add(v);
+         return retList;
+      }
+   }
+
+   class Edge
+   {
+      public Vertex From;
+      public Vertex To;
+      public NodeItem FromItem;
+      public NodeItem ToItem;
+   }
+
+   class Vertex
+   {
+      private List<Edge> _edgesIn;
+      private List<Edge> _edgesOut;
+      public Node Data;
+      public int Depth;
+      public List<Edge> EdgesIn
+      {
+         get
+         {
+            if (_edgesIn == null)
+               _edgesIn = new List<Edge>();
+            return _edgesIn;
+         }
+      }
+      public List<Edge> EdgesOut
+      {
+         get
+         {
+            if (_edgesOut == null)
+               _edgesOut = new List<Edge>();
+            return _edgesOut;
+         }
       }
    }
 }

@@ -15,7 +15,7 @@ namespace TextureNodeModule
        {
           Node textureNode = new Node(GetNodeName());
 
-          NodeItem imageItem = new Graph.Items.NodeImageItem(Properties.Resources.DefaultImage, 64, 64, false, true, null, new[] { typeof(Image) }) { Tag = "out" };
+          NodeItem imageItem = new Graph.Items.NodeImageItem(Properties.Resources.DefaultImage, 64, 64, false, true, null, new[] { typeof(ShaderTypes.sampler2D) }) { Tag = "out" };
           textureNode.AddItem(imageItem);
 
           textureNode.ParentModule = this;
@@ -41,8 +41,6 @@ namespace TextureNodeModule
        public event EventHandler<Graph.NodeItemEventArgs> OutputChanged;
 
        #region Serializing
-       public bool IsAnOutputNode() { return true; }
-
        public string Serialize(Node node)
        {
           return "";
@@ -52,6 +50,17 @@ namespace TextureNodeModule
        {
           return CreateNode();
        }
+       #endregion
+
+       #region Compiling
+       public object GetCompiledData(Node node)
+       {
+          ShaderNodeDataTypes.InputNodeType shaderNode = new ShaderNodeDataTypes.InputNodeType();
+          shaderNode.CompiledHeaderString = "uniform sampler2D {OUTPUT1_NAME} : register({REGISTER_NUM});";
+          return shaderNode;
+       }
+
+       public bool isMainInput() { return false; }
        #endregion
     }
 }

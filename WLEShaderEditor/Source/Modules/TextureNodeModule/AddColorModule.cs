@@ -18,8 +18,11 @@ namespace TextureNodeModule
       {
          Node addColorNode = new Node(GetNodeName());
          addColorNode.Location = new Point(200, 50);
-         var color = new NodeLabelItem("Color", true, false, new[] { typeof(Color) }, null) { Tag = 1 };
-         var imageIn = new NodeLabelItem("Image", true, false, new[] { typeof(Image) }, null) { Tag = 2 };
+         var color = new NodeLabelItem("Color", true, false, new[] { 
+            typeof(ShaderTypes.float3), 
+            typeof(ShaderTypes.float4) }, 
+            null) { Tag = 1 };
+         var imageIn = new NodeLabelItem("Image", true, false, new[] { typeof(ShaderTypes.sampler2D) }, null) { Tag = 2 };
          var imageOut = new NodeImageItem(Properties.Resources.DefaultImage, 
                                           64, 
                                           64, 
@@ -159,8 +162,6 @@ namespace TextureNodeModule
       }
 
       #region Serializing
-      public bool IsAnOutputNode() { return true; }
-
       public string Serialize(Node node)
       {
          return "";
@@ -170,6 +171,17 @@ namespace TextureNodeModule
       {
          return CreateNode();
       }
+      #endregion
+
+      #region Compiling
+      public object GetCompiledData(Node node)
+      {
+         ShaderNodeDataTypes.ShaderNode shaderNode = new ShaderNodeDataTypes.ShaderNode();
+         shaderNode.FunctionBodyString = "float4 {OUTPUT1_NAME} = lerp({VARIABLE1_NAME},{VARIABLE2_NAME},{VALUE}});";
+         return shaderNode;
+      }
+
+      public bool isMainInput() { return false; }
       #endregion
    }
 }

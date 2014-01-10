@@ -17,9 +17,18 @@ namespace ColorMixerNodeModule
        {
           var colorMixerNode = new Node(GetNodeName());
           colorMixerNode.Location = new Point(200, 50);
-          var color1 = new NodeColorItem("Color 1", Color.Black, true, false, new[] {typeof(Color)}, null) { Tag = 1 };
-          var color2 = new NodeColorItem("Color 2", Color.Black, true, false, new[] {typeof(Color)}, null) { Tag = 2 };
-          var color3 = new NodeColorItem("Result", Color.Black, false, true, null, new []{typeof(Color)}) { Tag = 3 };
+          var color1 = new NodeColorItem("Color 1", Color.Black, true, false, new[] { 
+             typeof(ShaderTypes.float3), 
+             typeof(ShaderTypes.float4) }, 
+             null) { Tag = 1 };
+          var color2 = new NodeColorItem("Color 2", Color.Black, true, false, new[] { 
+             typeof(ShaderTypes.float3), 
+             typeof(ShaderTypes.float4) }, 
+             null) { Tag = 2 };
+          var color3 = new NodeColorItem("Result", Color.Black, false, true, null, new [] {
+             typeof(ShaderTypes.float3), 
+             typeof(ShaderTypes.float4)}) 
+             { Tag = 3 };
 
           colorMixerNode.AddItem(color1);
           colorMixerNode.AddItem(color2);
@@ -95,10 +104,9 @@ namespace ColorMixerNodeModule
 
        private Color MixColors(Color color1, Color color2)
        {
-          Color retColor;
-          int r = Math.Min((color1.R + color2.R) / 2, 255);
-          int g = Math.Min((color1.G + color2.G) / 2, 255);
-          int b = Math.Min((color1.B + color2.B) / 2, 255);
+          int r = color1.R + ((50 * (color2.R - color1.R)) / 100);
+          int g = color1.G + ((50 * (color2.G - color1.G)) / 100);
+          int b = color1.B + ((50 * (color2.B - color1.B)) / 100);
           return Color.FromArgb(255, r, g, b);
        }
 
@@ -136,8 +144,6 @@ namespace ColorMixerNodeModule
        #endregion
 
        #region Serializing
-       public bool IsAnOutputNode() { return true; }
-
        public string Serialize(Node node)
        {
           return "";
@@ -149,5 +155,15 @@ namespace ColorMixerNodeModule
        }
        #endregion
 
+       #region Compiling
+       public object GetCompiledData(Node node)
+       {
+          ShaderNodeDataTypes.ShaderNode shaderNode = new ShaderNodeDataTypes.ShaderNode();
+          shaderNode.FunctionBodyString = "float4 {OUTPUT1_NAME} = lerp({VARIABLE1_NAME},{VARIABLE2_NAME},{VALUE}});";
+          return shaderNode;
+       }
+
+       public bool isMainInput() { return false; }
+       #endregion
     }
 }
