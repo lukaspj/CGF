@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace ShaderModuleAPI
 {
-   public class ShaderTypes
+   public static class ShaderTypes
    {
       public struct float4
       {
-         float x, y, z, w;
+         public float x, y, z, w;
       }
 
       public struct float3
       {
-         float x, y, z;
+         public float x, y, z;
       }
 
       public struct float2
       {
-         float x, y;
+         public float x, y;
       }
 
       public struct sampler2D

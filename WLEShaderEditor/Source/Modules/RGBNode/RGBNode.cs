@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
+using System.Globalization;
 using Graph;
 using Graph.Items;
 using ShaderModuleAPI;
@@ -27,6 +29,12 @@ namespace RGBNodeModule
             var blue = blueChannel.Value;
             var green = greenChannel.Value;
             colorItem.Color = Color.FromArgb((int)Math.Round(red * 255), (int)Math.Round(green * 255), (int)Math.Round(blue * 255));
+            colorItem.OutputData = new ShaderTypes.float3()
+            {
+               x = red,
+               y = green,
+               z = blue
+            };
          };
          redChannel.ValueChanged += channelChangedDelegate;
          greenChannel.ValueChanged += channelChangedDelegate;
@@ -49,6 +57,13 @@ namespace RGBNodeModule
          colorNode.AddItem(colorItem);
 
          colorNode.ParentModule = this;
+
+         colorItem.OutputData = new ShaderTypes.float3()
+         {
+            x = 0,
+            y = 0,
+            z = 0
+         };
 
          return colorNode;
       }
@@ -116,7 +131,9 @@ namespace RGBNodeModule
       public object GetCompiledData(Node node)
       {
          ShaderNodeDataTypes.InputNodeType shaderNode = new ShaderNodeDataTypes.InputNodeType();
-         shaderNode.FunctionBodyString = "const float4 {OUTPUT1_NAME} = {{VALUE1},{VALUE2},{VALUE3}};";
+         ShaderTypes.float3 f3 = (ShaderTypes.float3)node.Items.FirstOrDefault(item => item.Tag == "out").OutputData;
+         shaderNode.FunctionBodyString = "const float3 {OUTPUT1_NAME} = {" + f3.x.ToString(CultureInfo.InvariantCulture) + "," + 
+            f3.y.ToString(CultureInfo.InvariantCulture) + "," + f3.z.ToString(CultureInfo.InvariantCulture) + "};";
          return shaderNode;
       }
 

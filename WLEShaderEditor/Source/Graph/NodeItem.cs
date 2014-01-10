@@ -60,6 +60,8 @@ namespace Graph
       public Type[] InputTypes { get; set; }
       public Type[] OutputTypes { get; set; }
 
+      public object OutputData;
+
 		public NodeConnector		Input			{ get; private set; }
 		public NodeConnector		Output			{ get; private set; }
 
