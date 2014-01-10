@@ -6,6 +6,7 @@ using System.Linq;
 using Graph;
 using Graph.Items;
 using ShaderModuleAPI;
+using ShaderModuleAPI.Utility;
 
 namespace TextureNodeModule
 {
@@ -49,7 +50,7 @@ namespace TextureNodeModule
       {
          NodeConnector connector;
          Node node;
-         NodeColorItem colorFromItem = null;
+         NodeItem colorFromItem = null;
          NodeImageItem imageFromItem = null;
          NodeImageItem imageOutputItem = null;
 
@@ -70,7 +71,7 @@ namespace TextureNodeModule
             if (conn.To.Item == imageToItem)
                imageFromItem = conn.From.Item as NodeImageItem;
             if (conn.To.Item == colorToItem)
-               colorFromItem = conn.From.Item as NodeColorItem;
+               colorFromItem = conn.From.Item;
          }
 
          if (!colorHandlerDict.ContainsKey(node) && colorFromItem != null && imageFromItem != null)
@@ -79,7 +80,7 @@ namespace TextureNodeModule
             {
                if (imageFromItem != null && colorFromItem != null)
                {
-                  imageOutputItem.Image = AddColor(colorFromItem.Color, imageFromItem.Image);
+                  imageOutputItem.Image = AddColor(HelperMethods.ColorFromFloatStruct(colorFromItem.OutputData), imageFromItem.Image);
                   node.UpdateOutput(outArgs);
                }
             };
@@ -92,7 +93,7 @@ namespace TextureNodeModule
             {
                if (imageFromItem != null && colorFromItem != null)
                {
-                  imageOutputItem.Image = AddColor(colorFromItem.Color, imageFromItem.Image);
+                  imageOutputItem.Image = AddColor(HelperMethods.ColorFromFloatStruct(colorFromItem.OutputData), imageFromItem.Image);
                   node.UpdateOutput(outArgs);
                }
             };
@@ -101,7 +102,7 @@ namespace TextureNodeModule
 
          if (imageFromItem != null && colorFromItem != null)
          {
-            imageOutputItem.Image = AddColor(colorFromItem.Color, imageFromItem.Image);
+            imageOutputItem.Image = AddColor(HelperMethods.ColorFromFloatStruct(colorFromItem.OutputData), imageFromItem.Image);
             node.UpdateOutput(outArgs);
          }
       }

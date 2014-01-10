@@ -37,5 +37,26 @@ namespace ShaderModuleAPI.Utility
       {
          return Color.FromArgb((int)(f4.x * 255), (int)(f4.y * 255), (int)(f4.z * 255));
       }
+
+      public static ShaderTypes.float3 Float3FromColor(Color color)
+      {
+         return new ShaderTypes.float3()
+         {
+            x = color.R / 255.0f,
+            y = color.G / 255.0f,
+            z = color.B / 255.0f
+         };
+      }
+
+      public static ShaderTypes.float4 Float4FromColor(Color color)
+      {
+         return new ShaderTypes.float4()
+         {
+            x = color.R / 255.0f,
+            y = color.G / 255.0f,
+            z = color.B / 255.0f,
+            w = color.A / 255.0f
+         };
+      }
    }
 }

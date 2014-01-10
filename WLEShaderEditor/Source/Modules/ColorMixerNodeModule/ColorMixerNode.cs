@@ -49,7 +49,6 @@ namespace ColorMixerNodeModule
        #region EventHandling
        public void HandleConnectionAdded(NodeConnection connection, bool input)
        {
-          NodeConnector connector;
           Node node;
           if (input)
              node = connection.To.Node;
@@ -102,13 +101,7 @@ namespace ColorMixerNodeModule
           var nodeItem3 = (NodeColorItem)node.Items.FirstOrDefault(item => item.Tag.Equals(3));
           nodeItem3.Color = color;
           var args = new NodeItemEventArgs(nodeItem3);
-          ShaderTypes.float3 outputDat = new ShaderTypes.float3()
-          {
-             x = color.R,
-             y = color.G,
-             z = color.B
-          };
-          nodeItem3.OutputData = color;
+          nodeItem3.OutputData = HelperMethods.Float3FromColor(color);
           node.UpdateOutput(args);
        }
 
