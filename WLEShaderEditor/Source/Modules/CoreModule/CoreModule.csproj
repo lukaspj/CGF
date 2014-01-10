@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PostFXPOutputNode.cs" />
     <Compile Include="PostFXPInput.cs" />
     <Compile Include="MaterialInputNode.cs" />
     <Compile Include="OutputNode.cs" />
