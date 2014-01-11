@@ -37,7 +37,7 @@ namespace CoreModule
 
        public string GetNodeName()
        {
-          return "PostFXPixelShaderInput";
+          return "PostFXPInput";
        }
 
 
