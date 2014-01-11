@@ -19,8 +19,7 @@ namespace RGBNodeModule
          var greenChannel = new NodeSliderItem("G", 64.0f, 16.0f, 0, 1.0f, 0.0f, false, false) { Tag = "green" };
          var blueChannel = new NodeSliderItem("B", 64.0f, 16.0f, 0, 1.0f, 0.0f, false, false) { Tag = "blue" };
          var colorItem = new NodeColorItem("Color", Color.Black, false, true, null, new[] { 
-            typeof(ShaderTypes.float3), 
-            typeof(ShaderTypes.float4) }) 
+            typeof(ShaderTypes.float3) }) 
             { Tag = "out" };
 
          EventHandler<NodeItemEventArgs> channelChangedDelegate = delegate(object sender, NodeItemEventArgs args)

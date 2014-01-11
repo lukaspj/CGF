@@ -27,8 +27,7 @@ namespace ColorMixerNodeModule
              typeof(ShaderTypes.float4) }, 
              null) { Tag = 2 };
           var color3 = new NodeColorItem("Result", Color.Black, false, true, null, new [] {
-             typeof(ShaderTypes.float3), 
-             typeof(ShaderTypes.float4)}) 
+             typeof(ShaderTypes.float3)}) 
              { Tag = 3 };
 
           colorMixerNode.AddItem(color1);
