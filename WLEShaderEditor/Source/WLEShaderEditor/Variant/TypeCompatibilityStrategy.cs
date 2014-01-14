@@ -10,12 +10,12 @@ namespace WLEShaderEditor.Variant
 {
    class TypeCompatibilityStrategy : ICompatibilityStrategy
    {
-      public bool CanConnect(NodeConnector @from, NodeConnector to)
+      public bool CanConnect(NodeConnector from, NodeConnector to)
       {
          if (from.Item.OutputTypes == null ||
              to.Item.InputTypes == null)
             return false;
-         foreach (var outputType in @from.Item.OutputTypes)
+         foreach (var outputType in from.Item.OutputTypes)
          {
             foreach (var inputType in to.Item.InputTypes)
             {

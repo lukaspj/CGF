@@ -6,6 +6,7 @@ using ShaderModuleAPI;
 using System.IO;
 using WLEShaderEditor.Utility;
 using System.Drawing;
+using System.Globalization;
 
 namespace WLEShaderEditor.Model
 {

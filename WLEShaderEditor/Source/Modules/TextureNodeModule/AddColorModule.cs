@@ -46,6 +46,8 @@ namespace TextureNodeModule
          return "Add";
       }
 
+      #region EventHandling
+
       public void HandleConnectionAdded(NodeConnection connection, bool input)
       {
          NodeConnector connector;
@@ -162,6 +164,8 @@ namespace TextureNodeModule
          }
       }
 
+      #endregion
+
       #region Serializing
       public string Serialize(Node node)
       {
@@ -175,11 +179,11 @@ namespace TextureNodeModule
       #endregion
 
       #region Compiling
-      public object GetCompiledData(Node node)
+      public object[] GetCompiledData(Node node)
       {
          ShaderNodeDataTypes.ShaderNode shaderNode = new ShaderNodeDataTypes.ShaderNode();
          shaderNode.FunctionBodyString = "float4 {OUTPUT1_NAME} = lerp({VARIABLE1_NAME},{VARIABLE2_NAME},{0.5}});";
-         return shaderNode;
+         return new[] {shaderNode};
       }
 
       public bool isMainInput() { return false; }

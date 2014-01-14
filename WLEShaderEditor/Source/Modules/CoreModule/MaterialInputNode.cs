@@ -49,11 +49,11 @@ namespace CoreModule
        #endregion
 
        #region Compiling
-       public object GetCompiledData(Node node)
+       public object[] GetCompiledData(Node node)
        {
           ShaderNodeDataTypes.InputNodeType shaderNode = new ShaderNodeDataTypes.InputNodeType();
           shaderNode.CompiledHeaderString = "uniform sampler2D {OUTPUT1_NAME} : register({REGISTER_NUM});";
-          return shaderNode;
+          return new[] {shaderNode};
        }
 
        public bool isMainInput() { return false; }

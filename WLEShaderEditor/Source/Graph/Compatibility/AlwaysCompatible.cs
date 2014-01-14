@@ -9,7 +9,7 @@
 		/// <param name="from">From which node connector are we connecting.</param>
 		/// <param name="to">To which node connector are we connecting?</param>
 		/// <returns><see langword="true"/> if the connection is valid; <see langword="false"/> otherwise</returns>
-		public bool CanConnect( NodeConnector @from, NodeConnector to )
+		public bool CanConnect( NodeConnector from, NodeConnector to )
 		{
 			return true;
 		}

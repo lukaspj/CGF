@@ -40,8 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PostFXPOutputNode.cs" />
-    <Compile Include="PostFXPInputNode.cs" />
+    <Compile Include="PostFxPOutputNode.cs" />
+    <Compile Include="PostFxPInputNode.cs" />
     <Compile Include="MaterialInputNode.cs" />
     <Compile Include="OutputNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

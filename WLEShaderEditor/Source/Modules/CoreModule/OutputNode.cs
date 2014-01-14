@@ -49,11 +49,11 @@ namespace CoreModule
        #endregion
 
        #region Compiling
-       public object GetCompiledData(Node node)
+       public object[] GetCompiledData(Node node)
        {
           ShaderNodeDataTypes.ShaderNode shaderNode = new ShaderNodeDataTypes.ShaderNode();
           shaderNode.FunctionBodyString = "return {VARIABLE1_NAME};";
-          return shaderNode;
+          return new[] {shaderNode};
        }
 
        public bool isMainInput() { return false; }

@@ -14,6 +14,7 @@ namespace WLEShaderEditor.Compilers
       private StreamWriter outStream;
       int currentDepth;
       Dictionary<object, string> InputDict;
+      Dictionary<object, int> RegisterDict;
 
       public void Compile(ProgramGraph graph)
       {
@@ -40,7 +41,7 @@ namespace WLEShaderEditor.Compilers
          {
             IModule module = v.Data.ParentModule as IModule;
             ShaderNodeDataTypes.InputNodeType inputData 
-               = module.GetCompiledData(v.Data) as ShaderNodeDataTypes.InputNodeType;
+               = module.GetCompiledData(v.Data)[0] as ShaderNodeDataTypes.InputNodeType;
             if (inputData.CompiledHeaderString != null)
             {
                string HeaderString = inputData.CompiledHeaderString;
@@ -57,7 +58,7 @@ namespace WLEShaderEditor.Compilers
       {
          IModule module = main.Data.ParentModule as IModule;
          ShaderNodeDataTypes.MainInputNodeType inputData
-            = module.GetCompiledData(main.Data) as ShaderNodeDataTypes.MainInputNodeType;
+            = module.GetCompiledData(main.Data)[0] as ShaderNodeDataTypes.MainInputNodeType;
          string postFix = "";
          if (inputData.postFix != null)
             postFix = " : " + inputData.postFix;
@@ -71,7 +72,7 @@ namespace WLEShaderEditor.Compilers
          {
             IModule module = v.Data.ParentModule as IModule;
             ShaderNodeDataTypes.ShaderNode inputData
-               = module.GetCompiledData(v.Data) as ShaderNodeDataTypes.ShaderNode;
+               = module.GetCompiledData(v.Data)[0] as ShaderNodeDataTypes.ShaderNode;
             if (inputData.FunctionBodyString != null)
             {
                string BodyString = inputData.FunctionBodyString;

@@ -9,7 +9,7 @@ using ShaderModuleAPI;
 
 namespace CoreModule
 {
-    public class PostFXPInputNode : IModule
+    public class PostFxPInputNode : IModule
     {
        public Node CreateNode()
        {
@@ -65,7 +65,7 @@ namespace CoreModule
        #endregion
 
        #region Compiling
-       public object GetCompiledData(Node node)
+       public object[] GetCompiledData(Node node)
        {
           ShaderNodeDataTypes.MainInputNodeType shaderNode = new ShaderNodeDataTypes.MainInputNodeType();
           shaderNode.returnType = "float4";
@@ -80,7 +80,7 @@ namespace CoreModule
    float2 {OUTPUT5_NAME_IN_SCOPE_TAG}        : TEXCOORD3;
    float3 {OUTPUT6_NAME_IN_SCOPE_TAG}   : TEXCOORD4;
 };";
-          return shaderNode;
+          return new[] {shaderNode};
        }
 
        public bool isMainInput() { return true; }

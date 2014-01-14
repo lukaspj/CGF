@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Compilers\Compiler.cs" />
     <Compile Include="Compilers\HLSLCompiler.cs" />
+    <Compile Include="Compilers\T3DPostFxCompiler.cs" />
     <Compile Include="EditorWindow.cs">
       <SubType>Form</SubType>
     </Compile>

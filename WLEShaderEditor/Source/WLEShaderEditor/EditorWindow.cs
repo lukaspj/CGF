@@ -8,13 +8,16 @@ using WLEShaderEditor.Variant;
 using WLEShaderEditor.Model;
 using System.Collections.Generic;
 
+using System.Globalization;
+using System.Threading;
+
 namespace WLEShaderEditor
 {
    public partial class EditorWindow : Form
    {
       public EditorWindow()
       {
-
+         Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
          InitializeComponent();
 
          graphControl.CompatibilityStrategy = new TypeCompatibilityStrategy();

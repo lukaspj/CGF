@@ -127,13 +127,13 @@ namespace RGBNodeModule
       #endregion
 
       #region Compiling
-      public object GetCompiledData(Node node)
+      public object[] GetCompiledData(Node node)
       {
          ShaderNodeDataTypes.InputNodeType shaderNode = new ShaderNodeDataTypes.InputNodeType();
          ShaderTypes.float3 f3 = (ShaderTypes.float3)node.Items.FirstOrDefault(item => item.Tag == "out").OutputData;
-         shaderNode.FunctionBodyString = "const float3 {OUTPUT1_NAME} = {" + f3.x.ToString(CultureInfo.InvariantCulture) + "," + 
+         shaderNode.CompiledHeaderString = "uniform float3 {OUTPUT1_NAME} = {" + f3.x.ToString(CultureInfo.InvariantCulture) + "," +
             f3.y.ToString(CultureInfo.InvariantCulture) + "," + f3.z.ToString(CultureInfo.InvariantCulture) + "};";
-         return shaderNode;
+         return new[] {shaderNode};
       }
 
       public bool isMainInput() { return false; }

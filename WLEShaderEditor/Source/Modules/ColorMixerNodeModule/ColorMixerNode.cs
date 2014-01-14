@@ -142,7 +142,7 @@ namespace ColorMixerNodeModule
        #endregion
 
        #region Compiling
-       public object GetCompiledData(Node node)
+       public object[] GetCompiledData(Node node)
        {
           ShaderNodeDataTypes.ShaderNode shaderNode = new ShaderNodeDataTypes.ShaderNode();
           //ShaderTypes.float3 f3 = (ShaderTypes.float3)node.Items.FirstOrDefault(item => item.Tag.Equals(3)).OutputData;
@@ -156,7 +156,7 @@ namespace ColorMixerNodeModule
           if (f2 is ShaderTypes.float3)
              variable2 = "float4({VARIABLE2_NAME}, 1)";
           shaderNode.FunctionBodyString = "float4 {OUTPUT1_NAME} = lerp(" + variable1 + "," + variable2 + ",0.5);";
-          return shaderNode;
+          return new[] {shaderNode};
        }
 
        public bool isMainInput() { return false; }
