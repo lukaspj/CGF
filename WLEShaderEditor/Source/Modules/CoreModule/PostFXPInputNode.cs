@@ -73,14 +73,20 @@ namespace CoreModule
           shaderNode.CompiledHeaderString =
 @"struct ConnData
 {
-   float4 {OUTPUT1_NAME_IN_SCOPE_TAG}       : POSITION;
-   float2 {OUTPUT2_NAME_IN_SCOPE_TAG}        : TEXCOORD0;
-   float2 {OUTPUT3_NAME_IN_SCOPE_TAG}        : TEXCOORD1;
-   float2 {OUTPUT4_NAME_IN_SCOPE_TAG}        : TEXCOORD2;
-   float2 {OUTPUT5_NAME_IN_SCOPE_TAG}        : TEXCOORD3;
-   float3 {OUTPUT6_NAME_IN_SCOPE_TAG}   : TEXCOORD4;
+   float4 hpos       : POSITION;
+   float2 uv0        : TEXCOORD0;
+   float2 uv1        : TEXCOORD1;
+   float2 uv2        : TEXCOORD2;
+   float2 uv3        : TEXCOORD3;
+   float3 wsEyeRay   : TEXCOORD4;
 };";
-          return new[] {shaderNode};
+          KeyValuePair<object, string> posPair = new KeyValuePair<object, string>(node.Items.ElementAt(0), "IN.hpos");
+          KeyValuePair<object, string> uv0Pair = new KeyValuePair<object, string>(node.Items.ElementAt(1), "IN.uv0");
+          KeyValuePair<object, string> uv1Pair = new KeyValuePair<object, string>(node.Items.ElementAt(2), "IN.uv1");
+          KeyValuePair<object, string> uv2Pair = new KeyValuePair<object, string>(node.Items.ElementAt(3), "IN.uv2");
+          KeyValuePair<object, string> uv3Pair = new KeyValuePair<object, string>(node.Items.ElementAt(4), "IN.uv3");
+          KeyValuePair<object, string> wsEyeRayPair = new KeyValuePair<object, string>(node.Items.ElementAt(5), "IN.wsEyeRay");
+          return new object[] {shaderNode, posPair, uv0Pair, uv1Pair, uv2Pair, uv3Pair, wsEyeRayPair};
        }
 
        public bool isMainInput() { return true; }
