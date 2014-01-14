@@ -60,8 +60,10 @@
     <Compile Include="EditorWindow.Designer.cs">
       <DependentUpon>EditorWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\CompilerOutputInfo.cs" />
     <Compile Include="Model\GraphModel.cs" />
     <Compile Include="Model\ProgramGraph.cs" />
+    <Compile Include="Model\ShaderOutputInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\GlobalData.cs" />

@@ -11,7 +11,7 @@ namespace WLEShaderEditor.Compilers
 {
    class HLSLCompiler : Compiler
    {
-      private StringBuilder mOutput;
+      private StreamWriter outStream;
       int currentDepth;
       Dictionary<object, string> InputDict;
       Dictionary<string, int> RegisterDict;
@@ -26,14 +26,15 @@ namespace WLEShaderEditor.Compilers
          RegisterDict = registerDict;
       }
 
-      public string Compile(ProgramGraph graph)
+      public void Compile(ProgramGraph graph, CompilerOutputInfo info)
       {
          currentDepth = 0;
          List<Vertex> inputVertices = graph.getVerticesForLayer(0);
          Vertex main = GetMainInput(inputVertices);
          if (main == null)
-            return null;
+            return;
          InputDict = new Dictionary<object, string>();
+         outStream = new StreamWriter(info.outputPath + info.outputFilename + ".hlsl");
          WriteInputHeaders(inputVertices);
          WriteFunctionHeader(main);
          for (int i = 0; i <= graph.getMaxDepth(); i++)
@@ -42,7 +43,7 @@ namespace WLEShaderEditor.Compilers
          }
          currentDepth--;
          WriteLine("}", IndentType.Decrease);
-         return mOutput.ToString();
+         outStream.Close();
       }
 
       private void WriteInputHeaders(List<Vertex> inputVertices)
@@ -118,10 +119,9 @@ namespace WLEShaderEditor.Compilers
       private void ParseVariables(Vertex v, ref string BodyString)
       {
          int i = 0;
-         foreach (object outputItem in v.Data.Items.Where(item => item.Output.Enabled))
+         foreach (object outputItem in v.Data.Items.Where(item => item.Input.Enabled))
          {
             Edge input = v.EdgesIn[i];
-            EnsureVariableIsRegistered(v, BodyString, i, input);
             BodyString = BodyString.Replace("{VARIABLE" + (i + 1) + "_NAME}",
                InputDict[input.FromItem]);
             i++;
@@ -166,7 +166,7 @@ namespace WLEShaderEditor.Compilers
 
       private void WriteLine(string line, IndentType indentType = IndentType.None)
       {
-         mOutput.AppendLine(GetTabsForCurrentDepth() + line);
+         outStream.WriteLine(GetTabsForCurrentDepth() + line);
          switch(indentType)
          {
             case IndentType.Increase:

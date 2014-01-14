@@ -63,8 +63,13 @@ namespace WLEShaderEditor
       private void CompileButton_Click(object sender, EventArgs e)
       {
          GraphModel model = GraphModel.FromControls((List<Node>)graphControl.Nodes);
-         Compilers.Compiler compiler = new Compilers.HLSLCompiler();
-         compiler.Compile(new ProgramGraph(model));
+         Compilers.Compiler compiler = new Compilers.T3DPostFxCompiler();
+         ShaderOutputInfo outInfo = new ShaderOutputInfo();
+         outInfo.outputFilename = "compiledFile";
+         outInfo.outputPath = "output/";
+         outInfo.scriptFilename = "compiledScriptFile";
+         outInfo.scriptPath = "outputScript/";
+         compiler.Compile(new ProgramGraph(model), outInfo);
       }
    }
 }

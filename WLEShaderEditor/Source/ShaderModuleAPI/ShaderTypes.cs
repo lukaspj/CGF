@@ -26,7 +26,7 @@ namespace ShaderModuleAPI
 
       public struct sampler2D
       {
-         Image sampler;
+         public string path;
       }
    }
 }
