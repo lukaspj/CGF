@@ -9,6 +9,6 @@ namespace WLEShaderEditor.Compilers
 {
    interface Compiler
    {
-      void Compile(ProgramGraph graph);
+      string Compile(ProgramGraph graph);
    }
 }

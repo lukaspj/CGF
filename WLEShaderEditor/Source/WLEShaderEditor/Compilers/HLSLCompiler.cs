@@ -11,20 +11,29 @@ namespace WLEShaderEditor.Compilers
 {
    class HLSLCompiler : Compiler
    {
-      private StreamWriter outStream;
+      private StringBuilder mOutput;
       int currentDepth;
       Dictionary<object, string> InputDict;
-      Dictionary<object, int> RegisterDict;
+      Dictionary<string, int> RegisterDict;
 
-      public void Compile(ProgramGraph graph)
+      public HLSLCompiler() { 
+         InputDict = new Dictionary<object, string>();
+      }
+
+      public HLSLCompiler(Dictionary<object, string> inputDict, Dictionary<string, int> registerDict)
+      {
+         InputDict = inputDict;
+         RegisterDict = registerDict;
+      }
+
+      public string Compile(ProgramGraph graph)
       {
          currentDepth = 0;
          List<Vertex> inputVertices = graph.getVerticesForLayer(0);
          Vertex main = GetMainInput(inputVertices);
          if (main == null)
-            return;
+            return null;
          InputDict = new Dictionary<object, string>();
-         outStream = new StreamWriter("compiledFile.hlsl");
          WriteInputHeaders(inputVertices);
          WriteFunctionHeader(main);
          for (int i = 0; i <= graph.getMaxDepth(); i++)
@@ -33,15 +42,27 @@ namespace WLEShaderEditor.Compilers
          }
          currentDepth--;
          WriteLine("}", IndentType.Decrease);
-         outStream.Close();
+         return mOutput.ToString();
       }
+
       private void WriteInputHeaders(List<Vertex> inputVertices)
       {
          foreach (Vertex v in inputVertices)
          {
             IModule module = v.Data.ParentModule as IModule;
-            ShaderNodeDataTypes.InputNodeType inputData 
-               = module.GetCompiledData(v.Data)[0] as ShaderNodeDataTypes.InputNodeType;
+            object[] compiledData = module.GetCompiledData(v.Data);
+            ShaderNodeDataTypes.InputNodeType inputData
+               = compiledData[0] as ShaderNodeDataTypes.InputNodeType;
+            for (int i = 1; i < compiledData.Count(); i++)
+            {
+               if (compiledData[i] is KeyValuePair<object, string>)
+               {
+                  KeyValuePair<object, string> KVP = (KeyValuePair<object, string>)compiledData[i];
+                  if (!InputDict.ContainsKey(KVP.Key))
+                     InputDict.Add(KVP.Key, KVP.Value);
+               }
+            }
+
             if (inputData.CompiledHeaderString != null)
             {
                string HeaderString = inputData.CompiledHeaderString;
@@ -71,8 +92,19 @@ namespace WLEShaderEditor.Compilers
          foreach (Vertex v in list)
          {
             IModule module = v.Data.ParentModule as IModule;
+            object[] compiledData = module.GetCompiledData(v.Data);
             ShaderNodeDataTypes.ShaderNode inputData
-               = module.GetCompiledData(v.Data)[0] as ShaderNodeDataTypes.ShaderNode;
+               = compiledData[0] as ShaderNodeDataTypes.ShaderNode;
+            for (int i = 1; i < compiledData.Count(); i++ )
+            {
+               if(compiledData[i] is KeyValuePair<object, string>)
+               {
+                  KeyValuePair<object, string> KVP = (KeyValuePair<object, string>)compiledData[i];
+                  if (!InputDict.ContainsKey(KVP.Key))
+                     InputDict.Add(KVP.Key, KVP.Value);
+               }
+            }
+
             if (inputData.FunctionBodyString != null)
             {
                string BodyString = inputData.FunctionBodyString;
@@ -85,12 +117,14 @@ namespace WLEShaderEditor.Compilers
 
       private void ParseVariables(Vertex v, ref string BodyString)
       {
-         for (int i = 0; i < v.EdgesIn.Count; i++)
+         int i = 0;
+         foreach (object outputItem in v.Data.Items.Where(item => item.Output.Enabled))
          {
             Edge input = v.EdgesIn[i];
             EnsureVariableIsRegistered(v, BodyString, i, input);
             BodyString = BodyString.Replace("{VARIABLE" + (i + 1) + "_NAME}",
                InputDict[input.FromItem]);
+            i++;
          }
       }
 
@@ -99,13 +133,7 @@ namespace WLEShaderEditor.Compilers
          int i = 0;
          foreach (object outputItem in v.Data.Items.Where(item => item.Output.Enabled))
          {
-            if (BodyString.Contains("{OUTPUT" + (i + 1) + "_NAME_IN_SCOPE_TAG}")) { 
-               BodyString = BodyString.Replace("{OUTPUT" + (i + 1) + "_NAME_IN_SCOPE_TAG}",
-                  "Var" + InputDict.Count);
-               InputDict[outputItem] = v.Data.Tag + "Var" + InputDict.Count;
-            }
-            else
-               EnsureVariableIsRegistered(v, BodyString, i, outputItem);
+            EnsureVariableIsRegistered(v, BodyString, i, outputItem);
             BodyString = BodyString.Replace("{OUTPUT" + (i + 1) + "_NAME}",
                InputDict[outputItem]);
             BodyString = BodyString.Replace("{OUTPUT" + (i + 1) + "_NAME_IN_SCOPE_TAG}",
@@ -118,8 +146,13 @@ namespace WLEShaderEditor.Compilers
       {
          if (!InputDict.ContainsKey(var))
          {
-            if (BodyString.Contains("{OUTPUT" + (i + 1) + "_NAME}"))
-               InputDict[var] = "Var" + InputDict.Count;
+            if (BodyString.Contains("{OUTPUT" + (i + 1) + "_NAME_IN_SCOPE_TAG}"))
+               BodyString = BodyString.Replace("{OUTPUT" + (i + 1) + "_NAME_IN_SCOPE_TAG}",
+                  InputDict[var] = v.Data.Tag + "Var" + InputDict.Count);
+            else if (BodyString.Contains("{OUTPUT" + (i + 1) + "_NAME}"))
+                  InputDict[var] = "Var" + InputDict.Count;
+            else
+               throw new NotSupportedException("Was unable to parse output macro from: " + BodyString);
          }
       }
 
@@ -133,7 +166,7 @@ namespace WLEShaderEditor.Compilers
 
       private void WriteLine(string line, IndentType indentType = IndentType.None)
       {
-         outStream.WriteLine(GetTabsForCurrentDepth() + line);
+         mOutput.AppendLine(GetTabsForCurrentDepth() + line);
          switch(indentType)
          {
             case IndentType.Increase:
