@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using WLEShaderEditor.Model;
 using ShaderModuleAPI;
 using System.IO;
+using Graph;
 
 namespace WLEShaderEditor.Compilers
 {
@@ -131,13 +132,16 @@ namespace WLEShaderEditor.Compilers
       private void ParseOutputs(Vertex v, ref string BodyString)
       {
          int i = 0;
-         foreach (object outputItem in v.Data.Items.Where(item => item.Output.Enabled))
+         foreach (NodeItem outputItem in v.Data.Items.Where(item => item.Output.Enabled))
          {
             EnsureVariableIsRegistered(v, BodyString, i, outputItem);
             BodyString = BodyString.Replace("{OUTPUT" + (i + 1) + "_NAME}",
                InputDict[outputItem]);
             BodyString = BodyString.Replace("{OUTPUT" + (i + 1) + "_NAME_IN_SCOPE_TAG}",
                InputDict[outputItem]);
+            if(outputItem.OutputData is ShaderTypes.sampler2D)
+               BodyString = BodyString.Replace("{REGISTER_NUM}",
+                  "S"+RegisterDict[((ShaderTypes.sampler2D)outputItem.OutputData).path]);
             i++;
          }
       }

@@ -45,11 +45,17 @@ namespace WLEShaderEditor.Compilers
 
       private void WritePostFxScript(ShaderOutputInfo info)
       {
+         string textures = "";
+         for(int i = 0; i < RegisterDict.Count; i++)
+         {
+            textures += "   texture[" + RegisterDict.Values.ElementAt(i) + "] = \"" + RegisterDict.Keys.ElementAt(i) + "\";\r\n";
+         }
+
          StreamWriter SW = new StreamWriter(info.scriptPath + info.scriptFilename + ".cs");
          SW.Write(@"singleton ShaderData( PFX_" + info.outputFilename + @" )  
 {     
    DXVertexShaderFile   = ""shaders/common/postFx/postFxV.hlsl"";  // bare-bones postFxV.hlsl
-   DXPixelShaderFile    = " + info.outputPath + info.outputFilename + @".hlsl"";  // new pixel shader   
+   DXPixelShaderFile    = """ + info.outputPath + info.outputFilename + @".hlsl"";  // new pixel shader   
    
    pixVersion = 3.0;  
 };");
@@ -60,9 +66,9 @@ namespace WLEShaderEditor.Compilers
 
    renderTime = ""PFXAfterDiffuse"";  
 
+" + textures + @"
    shader = PFX_" + info.outputFilename + @";  
    stateBlock = PFX_DefaultStateBlock;    
-   texture[0] = ""$backbuffer"";
 };");
          SW.Close();
       }

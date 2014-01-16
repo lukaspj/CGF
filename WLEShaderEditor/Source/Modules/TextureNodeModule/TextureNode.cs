@@ -18,6 +18,11 @@ namespace TextureNodeModule
           NodeItem imageItem = new Graph.Items.NodeImageItem(Properties.Resources.DefaultImage, 64, 64, false, true, null, new[] { typeof(ShaderTypes.sampler2D) }) { Tag = "out" };
           textureNode.AddItem(imageItem);
 
+          ShaderTypes.sampler2D sampler = new ShaderTypes.sampler2D();
+          sampler.path = "./DefaultImage.png";
+          imageItem.OutputData = sampler;
+          SetImage(textureNode, sampler.path);
+
           textureNode.ParentModule = this;
 
           return textureNode;
@@ -26,6 +31,13 @@ namespace TextureNodeModule
        public string GetNodeName()
        {
           return "Texture";
+       }
+
+       private void SetImage(Node node, string path)
+       {
+          Image img = new Bitmap(path);
+          Graph.Items.NodeImageItem imageItem = (Graph.Items.NodeImageItem)node.Items.Where(item => item.Tag.Equals("out")).First();
+          imageItem.Image = img;
        }
 
        public void HandleConnectionAdded(Graph.NodeConnection connection, bool input)
