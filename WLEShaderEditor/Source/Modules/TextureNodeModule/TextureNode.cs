@@ -33,12 +33,24 @@ namespace TextureNodeModule
           return "Texture";
        }
 
+       public string GetCategoryPath()
+       {
+          return "Input";
+       }
+
+       public object GetDependencyObject()
+       {
+          return null;
+       }
+
        private void SetImage(Node node, string path)
        {
           Image img = new Bitmap(path);
           Graph.Items.NodeImageItem imageItem = (Graph.Items.NodeImageItem)node.Items.Where(item => item.Tag.Equals("out")).First();
           imageItem.Image = img;
        }
+
+       #region EventHandling
 
        public void HandleConnectionAdded(Graph.NodeConnection connection, bool input)
        {
@@ -51,6 +63,8 @@ namespace TextureNodeModule
        }
 
        public event EventHandler<Graph.NodeItemEventArgs> OutputChanged;
+
+       #endregion
 
        #region Serializing
        public string Serialize(Node node)

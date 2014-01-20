@@ -41,9 +41,18 @@ namespace ColorMixerNodeModule
 
        public string GetNodeName()
        {
-          return "ColorMixer";
+          return "Mix";
        }
 
+       public string GetCategoryPath()
+       {
+          return "Color";
+       }
+
+       public object GetDependencyObject()
+       {
+          return null;
+       }
 
        #region EventHandling
        public void HandleConnectionAdded(NodeConnection connection, bool input)

@@ -72,6 +72,16 @@ namespace RGBNodeModule
          return "RGB";
       }
 
+      public string GetCategoryPath()
+      {
+         return "Input";
+      }
+
+      public object GetDependencyObject()
+      {
+         return null;
+      }
+
       #region Events
       private void OnColClicked(object sender, NodeItemEventArgs e)
       {

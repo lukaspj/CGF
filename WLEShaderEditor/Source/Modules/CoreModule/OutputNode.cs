@@ -24,6 +24,15 @@ namespace CoreModule
           return "Output";
        }
 
+       public string GetCategoryPath()
+       {
+          return "Output";
+       }
+
+       public object GetDependencyObject()
+       {
+          return null;
+       }
 
        #region EventHandling
        public void HandleConnectionAdded(NodeConnection connection, bool input)

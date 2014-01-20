@@ -37,9 +37,18 @@ namespace CoreModule
 
        public string GetNodeName()
        {
-          return "PostFXPInput";
+          return "PostFxPInput";
        }
 
+       public string GetCategoryPath()
+       {
+          return "PostFx";
+       }
+
+       public object GetDependencyObject()
+       {
+          return new List<string>() { "postfx.hlsl" };
+       }
 
        #region EventHandling
        public void HandleConnectionAdded(NodeConnection connection, bool input)

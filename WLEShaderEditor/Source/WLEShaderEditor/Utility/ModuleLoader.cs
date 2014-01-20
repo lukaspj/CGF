@@ -15,7 +15,7 @@ namespace ModuleSystem.Utility
       public static List<IModule> LoadModules()
       {
          var ret = new List<IModule>();
-         var modules = Directory.GetFiles("Modules", "*.dll");
+         var modules = Directory.GetFiles("CGF/Modules", "*.dll");
          foreach (var module in modules)
          {
             var ass = Assembly.LoadFrom(module);

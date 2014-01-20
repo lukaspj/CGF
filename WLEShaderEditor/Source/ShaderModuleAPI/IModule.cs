@@ -13,5 +13,7 @@ namespace ShaderModuleAPI
        bool isMainInput();
        void HandleConnectionAdded(NodeConnection connection, bool input);
        void HandleConnectionRemoved(NodeConnector fromNodeConnector, NodeConnector toNodeConnector, bool input);
+       string GetCategoryPath();
+       object GetDependencyObject();
     }
 }

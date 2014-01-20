@@ -9,5 +9,6 @@ namespace WLEShaderEditor.Model
    {
       public string scriptFilename;
       public string scriptPath;
+      public string includes;
    }
 }

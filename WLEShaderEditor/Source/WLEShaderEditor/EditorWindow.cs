@@ -49,20 +49,22 @@ namespace WLEShaderEditor
 
       private void SaveButton_Click(object sender, EventArgs e)
       {
-         GraphModel model = GraphModel.FromControls((List<Node>)graphControl.Nodes);
+         GraphModel model = new GraphModel(new FileDependencyParserStrategy(), 
+            new DelimiterSerializationStrategy(), 
+            (List<Node>)graphControl.Nodes);
          model.SaveToFile("model.graph");
       }
 
       private void LoadButton_Click(object sender, EventArgs e)
       {
          graphControl.RemoveNodes(new List<Node>(graphControl.Nodes));
-         GraphModel model = GraphModel.LoadFromFile("model.graph");
+         GraphModel model = new GraphModel(new FileDependencyParserStrategy(), new DelimiterSerializationStrategy(), "model.graph");
          model.FillInToGraphControl(graphControl);
       }
 
       private void CompileButton_Click(object sender, EventArgs e)
       {
-         GraphModel model = GraphModel.FromControls((List<Node>)graphControl.Nodes);
+         GraphModel model = new GraphModel(new FileDependencyParserStrategy(), new DelimiterSerializationStrategy(), (List<Node>)graphControl.Nodes);
          Compilers.Compiler compiler = new Compilers.T3DPostFxCompiler();
          ShaderOutputInfo outInfo = new ShaderOutputInfo();
          outInfo.outputFilename = "compiledFile";

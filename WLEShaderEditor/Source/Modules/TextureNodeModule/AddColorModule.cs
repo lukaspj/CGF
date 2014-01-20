@@ -46,6 +46,16 @@ namespace TextureNodeModule
          return "Add";
       }
 
+      public string GetCategoryPath()
+      {
+         return "Color";
+      }
+
+      public object GetDependencyObject()
+      {
+         return null;
+      }
+
       #region EventHandling
 
       public void HandleConnectionAdded(NodeConnection connection, bool input)
