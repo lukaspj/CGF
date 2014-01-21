@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WLEShaderEditor.Framework;
 using CGF;
 using System.IO;
 using Graph;
 
-namespace WLEShaderEditor.Variant
+namespace T3DHLSLAPI.Variants
 {
    class HLSLCompiler : Compiler
    {

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace T3DHLSLAPI
+namespace CGF
 {
-    public class Class1
-    {
-    }
+   public interface Compiler
+   {
+      void Compile(ProgramGraph graph, CompilerOutputInfo info);
+   }
 }

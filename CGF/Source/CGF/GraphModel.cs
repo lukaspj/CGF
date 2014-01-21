@@ -4,13 +4,10 @@ using System.Linq;
 using Graph;
 using CGF;
 using System.IO;
-using WLEShaderEditor.Utility;
 using System.Drawing;
 using System.Globalization;
 
-using WLEShaderEditor.Framework;
-
-namespace WLEShaderEditor.Framework
+namespace CGF
 {
    public class GraphModel
    {

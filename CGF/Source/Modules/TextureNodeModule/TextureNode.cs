@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using CGF;
+using T3DHLSLAPI;
 using Graph;
 
 namespace TextureNodeModule

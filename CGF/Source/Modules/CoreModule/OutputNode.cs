@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Graph;
 using CGF;
+using T3DHLSLAPI;
 
 namespace CoreModule
 {

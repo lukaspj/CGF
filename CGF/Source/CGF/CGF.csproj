@@ -7,8 +7,8 @@
     <ProjectGuid>{B36F6A99-BF75-47D5-A036-9BD4AF1762EF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ShaderModuleAPI</RootNamespace>
-    <AssemblyName>ShaderModuleAPI</AssemblyName>
+    <RootNamespace>CGF</RootNamespace>
+    <AssemblyName>CGF</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>Mono</TargetFrameworkProfile>
@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\bin\Debug\</OutputPath>
+    <OutputPath>..\..\bin\Debug\CGF\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -34,6 +34,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,15 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HelperMethods.cs" />
+    <Compile Include="Compiler.cs" />
+    <Compile Include="CompilerOutputInfo.cs" />
+    <Compile Include="GraphModel.cs" />
+    <Compile Include="IDependencyParserStrategy.cs" />
     <Compile Include="IModule.cs" />
-    <Compile Include="ShaderNodeDataTypes.cs" />
+    <Compile Include="ISerializationStrategy.cs" />
+    <Compile Include="ProgramGraph.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ShaderTypes.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Graph\Graph.csproj">
-      <Project>{E4CC63D8-127D-4BC9-80E0-CCB3E9DA06DC}</Project>
+      <Project>{e4cc63d8-127d-4bc9-80e0-ccb3e9da06dc}</Project>
       <Name>Graph</Name>
     </ProjectReference>
   </ItemGroup>

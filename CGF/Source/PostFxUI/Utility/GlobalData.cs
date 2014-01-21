@@ -2,7 +2,7 @@
 using System.Linq;
 using CGF;
 
-namespace WLEShaderEditor.Utility
+namespace PostFxUI.Utility
 {
    public static class GlobalData
    {

@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CGF;
 
-namespace WLEShaderEditor.Framework
+namespace T3DHLSLAPI.Variants
 {
    public class ShaderOutputInfo : CompilerOutputInfo
    {

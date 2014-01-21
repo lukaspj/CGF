@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CGF;
 
-namespace WLEShaderEditor.Variant
+namespace T3DHLSLAPI.Variants
 {
-   class FileDependencyParserStrategy : WLEShaderEditor.Framework.IDependencyParserStrategy
+   public class FileDependencyParserStrategy : IDependencyParserStrategy
    {
       public object ParseDependencies(object dependency)
       {

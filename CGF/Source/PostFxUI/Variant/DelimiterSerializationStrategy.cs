@@ -6,10 +6,9 @@ using Graph;
 using System.IO;
 using System.Drawing;
 using CGF;
-using WLEShaderEditor.Utility;
-using WLEShaderEditor.Framework;
+using PostFxUI.Utility;
 
-namespace WLEShaderEditor.Variant
+namespace PostFxUI.Variant
 {
    class DelimiterSerializationStrategy : ISerializationStrategy
    {

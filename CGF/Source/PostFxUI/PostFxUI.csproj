@@ -7,8 +7,8 @@
     <ProjectGuid>{8944A37B-48E3-40A9-A47B-605CD82F98E9}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WLEShaderEditor</RootNamespace>
-    <AssemblyName>WLEShaderEditor</AssemblyName>
+    <RootNamespace>PostFxUI</RootNamespace>
+    <AssemblyName>PostFxUI</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>Mono</TargetFrameworkProfile>
@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\bin\Debug\</OutputPath>
+    <OutputPath>..\..\bin\Debug\CGF\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -51,9 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Framework\Compiler.cs" />
-    <Compile Include="Variant\HLSLCompiler.cs" />
-    <Compile Include="Variant\T3DPostFxCompiler.cs" />
     <Compile Include="EditorWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,24 +63,17 @@
     <Compile Include="FileDependencyWindow.Designer.cs">
       <DependentUpon>FileDependencyWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Framework\CompilerOutputInfo.cs" />
-    <Compile Include="Framework\GraphModel.cs" />
-    <Compile Include="Framework\IDependencyParserStrategy.cs" />
-    <Compile Include="Framework\ISerializationStrategy.cs" />
-    <Compile Include="Framework\ProgramGraph.cs" />
-    <Compile Include="Framework\ShaderOutputInfo.cs" />
-    <Compile Include="PostFxUI.cs">
+    <Compile Include="PostFxUIForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PostFxUI.Designer.cs">
-      <DependentUpon>PostFxUI.cs</DependentUpon>
+    <Compile Include="PostFxUIForm.Designer.cs">
+      <DependentUpon>PostFxUIForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\GlobalData.cs" />
     <Compile Include="Utility\ModuleLoader.cs" />
     <Compile Include="Variant\DelimiterSerializationStrategy.cs" />
-    <Compile Include="Variant\FileDependencyParserStrategy.cs" />
     <Compile Include="Variant\TypeCompatibilityStrategy.cs" />
     <EmbeddedResource Include="EditorWindow.resx">
       <DependentUpon>EditorWindow.cs</DependentUpon>
@@ -91,8 +81,8 @@
     <EmbeddedResource Include="FileDependencyWindow.resx">
       <DependentUpon>FileDependencyWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PostFxUI.resx">
-      <DependentUpon>PostFxUI.cs</DependentUpon>
+    <EmbeddedResource Include="PostFxUIForm.resx">
+      <DependentUpon>PostFxUIForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -126,6 +116,10 @@
     <ProjectReference Include="..\Graph\Graph.csproj">
       <Project>{E4CC63D8-127D-4BC9-80E0-CCB3E9DA06DC}</Project>
       <Name>Graph</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\T3DHLSLAPI\T3DHLSLAPI.csproj">
+      <Project>{520a434a-06cb-47fe-87d6-06c60bfe72c3}</Project>
+      <Name>T3DHLSLAPI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

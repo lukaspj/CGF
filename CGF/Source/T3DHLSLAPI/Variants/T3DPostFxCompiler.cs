@@ -3,13 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WLEShaderEditor.Framework;
 using CGF;
 using System.IO;
 
-namespace WLEShaderEditor.Variant
+namespace T3DHLSLAPI.Variants
 {
-   class T3DPostFxCompiler : Compiler
+   public class T3DPostFxCompiler : Compiler
    {
       private Compiler mCompiler;
 

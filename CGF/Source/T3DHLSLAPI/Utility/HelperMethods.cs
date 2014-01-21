@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
-using CGF;
+using T3DHLSLAPI;
 
-namespace CGF.Utility
+namespace T3DHLSLAPI.Utility
 {
    public static class HelperMethods
    {

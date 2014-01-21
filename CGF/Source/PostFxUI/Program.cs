@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using ModuleSystem.Utility;
-using WLEShaderEditor.Utility;
+using PostFxUI.Utility;
 
-namespace WLEShaderEditor
+namespace PostFxUI
 {
    static class Program
    {
@@ -19,7 +18,7 @@ namespace WLEShaderEditor
 
          Application.EnableVisualStyles();
          Application.SetCompatibleTextRenderingDefault(false);
-         Application.Run(new PostFxUI());
+         Application.Run(new PostFxUIForm());
       }
    }
 }

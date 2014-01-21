@@ -8,14 +8,14 @@ using System.Reflection;
 
 using CGF;
 
-namespace ModuleSystem.Utility
+namespace PostFxUI.Utility
 {
    public class ModuleLoader
    {
       public static List<IModule> LoadModules()
       {
          var ret = new List<IModule>();
-         var modules = Directory.GetFiles("CGF/Modules", "*.dll");
+         var modules = Directory.GetFiles("Modules", "*.dll");
          foreach (var module in modules)
          {
             var ass = Assembly.LoadFrom(module);

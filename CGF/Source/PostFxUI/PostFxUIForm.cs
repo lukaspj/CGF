@@ -7,21 +7,22 @@ using System.Linq;
 using System.Windows.Forms;
 using Graph;
 using CGF;
-using WLEShaderEditor.Utility;
-using WLEShaderEditor.Variant;
+using PostFxUI.Utility;
+using PostFxUI.Variant;
 
-using WLEShaderEditor.Framework;
+using T3DHLSLAPI;
+using T3DHLSLAPI.Variants;
 
 using System.Globalization;
 using System.Threading;
 
-namespace WLEShaderEditor
+namespace PostFxUI
 {
-   public partial class PostFxUI : Form
+   public partial class PostFxUIForm : Form
    {
       Dictionary<string, string> Dependencies;
 
-      public PostFxUI()
+      public PostFxUIForm()
       {
          Dependencies = new Dictionary<string, string>();
 
@@ -110,12 +111,13 @@ namespace WLEShaderEditor
       private void compileToolStripButton_Click(object sender, System.EventArgs e)
       {
          GraphModel model = new GraphModel(new FileDependencyParserStrategy(), new DelimiterSerializationStrategy(), (List<Node>)graphControl.Nodes);
-         Framework.Compiler compiler = new T3DPostFxCompiler();
+         Compiler compiler = new T3DPostFxCompiler();
          ShaderOutputInfo outInfo = new ShaderOutputInfo();
          outInfo.outputFilename = "compiledFile";
-         outInfo.outputPath = "shaders/common/postFx/";
+         outInfo.outputPath = "../shaders/common/postFx/";
+         outInfo.outputPath = "./";
          outInfo.scriptFilename = "compiledScriptFile";
-         outInfo.scriptPath = "core/scripts/client/postFx/";
+         outInfo.scriptPath = "../core/scripts/client/postFx/";
          compiler.Compile(new ProgramGraph(model), outInfo);
       }
 
@@ -142,7 +144,7 @@ namespace WLEShaderEditor
             }
          }
          Dependencies = _dependencies;
-         FileDependencyWindow FDW = new FileDependencyWindow(Dependencies, "shaders/common/postFx/");
+         FileDependencyWindow FDW = new FileDependencyWindow(Dependencies, "./");
          FDW.Show();
       }
    }

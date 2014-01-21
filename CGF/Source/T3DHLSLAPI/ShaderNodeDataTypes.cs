@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CGF
+namespace T3DHLSLAPI
 {
    public class ShaderNodeDataTypes
    {

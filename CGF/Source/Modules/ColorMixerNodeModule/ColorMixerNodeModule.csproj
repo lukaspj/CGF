@@ -54,6 +54,10 @@
       <Name>Graph</Name>
       <Private>False</Private>
     </ProjectReference>
+    <ProjectReference Include="..\..\T3DHLSLAPI\T3DHLSLAPI.csproj">
+      <Project>{520a434a-06cb-47fe-87d6-06c60bfe72c3}</Project>
+      <Name>T3DHLSLAPI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,6 +1,6 @@
-﻿namespace WLEShaderEditor
+﻿namespace PostFxUI
 {
-   partial class PostFxUI
+   partial class PostFxUIForm
    {
       /// <summary>
       /// Required designer variable.
@@ -28,7 +28,7 @@
       /// </summary>
       private void InitializeComponent()
       {
-         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PostFxUI));
+         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PostFxUIForm));
          Graph.Compatibility.AlwaysCompatible alwaysCompatible3 = new Graph.Compatibility.AlwaysCompatible();
          this.splitContainer1 = new System.Windows.Forms.SplitContainer();
          this.splitContainer2 = new System.Windows.Forms.SplitContainer();

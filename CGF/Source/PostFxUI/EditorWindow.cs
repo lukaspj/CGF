@@ -2,10 +2,10 @@
 using System.Windows.Forms;
 using Graph;
 using CGF;
-using WLEShaderEditor.Utility;
-using WLEShaderEditor.Variant;
+using PostFxUI.Utility;
+using PostFxUI.Variant;
+using T3DHLSLAPI.Variants;
 
-using WLEShaderEditor.Framework;
 using System.Collections.Generic;
 
 using System.Globalization;
@@ -65,7 +65,7 @@ namespace WLEShaderEditor
       private void CompileButton_Click(object sender, EventArgs e)
       {
          GraphModel model = new GraphModel(new FileDependencyParserStrategy(), new DelimiterSerializationStrategy(), (List<Node>)graphControl.Nodes);
-         Framework.Compiler compiler = new T3DPostFxCompiler();
+         Compiler compiler = new T3DPostFxCompiler();
          ShaderOutputInfo outInfo = new ShaderOutputInfo();
          outInfo.outputFilename = "compiledFile";
          outInfo.outputPath = "output/";

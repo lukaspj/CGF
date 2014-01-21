@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Graph;
 
-namespace WLEShaderEditor.Framework
+namespace CGF
 {
    public interface ISerializationStrategy
    {

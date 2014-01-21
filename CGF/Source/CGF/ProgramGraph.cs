@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Graph;
-using CGF;
 
-namespace WLEShaderEditor.Framework
+namespace CGF
 {
-   class ProgramGraph
+   public class ProgramGraph
    {
       List<Vertex> Vertices;
       List<Edge> Edges;
@@ -91,7 +90,7 @@ namespace WLEShaderEditor.Framework
       }
    }
 
-   class Edge
+   public class Edge
    {
       public Vertex From;
       public Vertex To;
@@ -99,7 +98,7 @@ namespace WLEShaderEditor.Framework
       public NodeItem ToItem;
    }
 
-   class Vertex
+   public class Vertex
    {
       private List<Edge> _edgesIn;
       private List<Edge> _edgesOut;

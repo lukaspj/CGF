@@ -6,6 +6,7 @@ using System.Globalization;
 using Graph;
 using Graph.Items;
 using CGF;
+using T3DHLSLAPI;
 
 namespace RGBNodeModule
 {

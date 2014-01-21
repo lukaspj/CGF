@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Graph;
 using Graph.Items;
 using CGF;
+using T3DHLSLAPI;
 
 namespace CoreModule
 {

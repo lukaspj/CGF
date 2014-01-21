@@ -6,7 +6,8 @@ using System.Linq;
 using Graph;
 using Graph.Items;
 using CGF;
-using CGF.Utility;
+using T3DHLSLAPI;
+using T3DHLSLAPI.Utility;
 
 namespace TextureNodeModule
 {

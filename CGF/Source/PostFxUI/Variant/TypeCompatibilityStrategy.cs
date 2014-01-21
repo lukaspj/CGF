@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Graph;
 using Graph.Compatibility;
 
-namespace WLEShaderEditor.Variant
+namespace PostFxUI.Variant
 {
    class TypeCompatibilityStrategy : ICompatibilityStrategy
    {
