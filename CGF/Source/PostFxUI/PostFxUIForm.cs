@@ -144,7 +144,7 @@ namespace PostFxUI
             }
          }
          Dependencies = _dependencies;
-         FileDependencyWindow FDW = new FileDependencyWindow(Dependencies, "./");
+         FileDependencyWindow FDW = new FileDependencyWindow(Dependencies, "../shaders/common/postFx/");
          FDW.Show();
       }
    }
