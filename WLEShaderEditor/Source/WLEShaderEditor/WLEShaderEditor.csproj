@@ -51,9 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Compilers\Compiler.cs" />
-    <Compile Include="Compilers\HLSLCompiler.cs" />
-    <Compile Include="Compilers\T3DPostFxCompiler.cs" />
+    <Compile Include="Framework\Compiler.cs" />
+    <Compile Include="Variant\HLSLCompiler.cs" />
+    <Compile Include="Variant\T3DPostFxCompiler.cs" />
     <Compile Include="EditorWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,12 +66,12 @@
     <Compile Include="FileDependencyWindow.Designer.cs">
       <DependentUpon>FileDependencyWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\CompilerOutputInfo.cs" />
-    <Compile Include="Model\GraphModel.cs" />
+    <Compile Include="Framework\CompilerOutputInfo.cs" />
+    <Compile Include="Framework\GraphModel.cs" />
     <Compile Include="Framework\IDependencyParserStrategy.cs" />
     <Compile Include="Framework\ISerializationStrategy.cs" />
-    <Compile Include="Model\ProgramGraph.cs" />
-    <Compile Include="Model\ShaderOutputInfo.cs" />
+    <Compile Include="Framework\ProgramGraph.cs" />
+    <Compile Include="Framework\ShaderOutputInfo.cs" />
     <Compile Include="PostFxUI.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -10,7 +10,7 @@ using System.Globalization;
 
 using WLEShaderEditor.Framework;
 
-namespace WLEShaderEditor.Model
+namespace WLEShaderEditor.Framework
 {
    public class GraphModel
    {
@@ -68,6 +68,7 @@ namespace WLEShaderEditor.Model
 
          _nodeIdentifierDict = new Dictionary<Node, int>();
          _nodeIdentifierReverseDict = new Dictionary<int, Node>();
+         _dependencyList = new List<object>();
 
          int i = 0;
          foreach (Node n in nodes)

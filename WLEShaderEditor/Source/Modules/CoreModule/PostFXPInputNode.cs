@@ -47,7 +47,7 @@ namespace CoreModule
 
        public object GetDependencyObject()
        {
-          return new List<string>() { "postfx.hlsl" };
+          return new List<string>() { "postFx.hlsl" };
        }
 
        #region EventHandling

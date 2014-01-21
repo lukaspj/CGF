@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WLEShaderEditor.Model;
+using WLEShaderEditor.Framework;
 using ShaderModuleAPI;
 using System.IO;
 using Graph;
 
-namespace WLEShaderEditor.Compilers
+namespace WLEShaderEditor.Variant
 {
    class HLSLCompiler : Compiler
    {

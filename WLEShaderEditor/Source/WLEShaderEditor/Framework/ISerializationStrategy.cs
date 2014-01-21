@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Graph;
-using WLEShaderEditor.Model;
 
 namespace WLEShaderEditor.Framework
 {

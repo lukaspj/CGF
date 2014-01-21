@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WLEShaderEditor.Model;
+using WLEShaderEditor.Framework;
 using ShaderModuleAPI;
 using System.IO;
 
-namespace WLEShaderEditor.Compilers
+namespace WLEShaderEditor.Variant
 {
    class T3DPostFxCompiler : Compiler
    {

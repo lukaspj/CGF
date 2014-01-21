@@ -10,7 +10,7 @@ using ShaderModuleAPI;
 using WLEShaderEditor.Utility;
 using WLEShaderEditor.Variant;
 
-using WLEShaderEditor.Model;
+using WLEShaderEditor.Framework;
 
 using System.Globalization;
 using System.Threading;
@@ -110,7 +110,7 @@ namespace WLEShaderEditor
       private void compileToolStripButton_Click(object sender, System.EventArgs e)
       {
          GraphModel model = new GraphModel(new FileDependencyParserStrategy(), new DelimiterSerializationStrategy(), (List<Node>)graphControl.Nodes);
-         Compilers.Compiler compiler = new Compilers.T3DPostFxCompiler();
+         Framework.Compiler compiler = new T3DPostFxCompiler();
          ShaderOutputInfo outInfo = new ShaderOutputInfo();
          outInfo.outputFilename = "compiledFile";
          outInfo.outputPath = "shaders/common/postFx/";
@@ -128,13 +128,16 @@ namespace WLEShaderEditor
          {
             foreach (object obj in dependencies)
             {
-               if ((obj as string) != null)
+               if ((obj as List<string>) != null)
                {
-                  string s = obj as string;
-                  if (Dependencies.Keys.Contains(s))
-                     _dependencies[s] = Dependencies[s];
-                  else
-                     _dependencies[s] = null;
+                  List<string> slist = obj as List<string>;
+                  foreach(string s in slist)
+                  {
+                     if (Dependencies.Keys.Contains(s))
+                        _dependencies[s] = Dependencies[s];
+                     else
+                        _dependencies[s] = null;
+                  }
                }
             }
          }

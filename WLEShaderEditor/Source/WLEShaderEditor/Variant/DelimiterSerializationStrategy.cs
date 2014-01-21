@@ -7,11 +7,11 @@ using System.IO;
 using System.Drawing;
 using ShaderModuleAPI;
 using WLEShaderEditor.Utility;
-using WLEShaderEditor.Model;
+using WLEShaderEditor.Framework;
 
 namespace WLEShaderEditor.Variant
 {
-   class DelimiterSerializationStrategy : WLEShaderEditor.Framework.ISerializationStrategy
+   class DelimiterSerializationStrategy : ISerializationStrategy
    {
       #region Serialization
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Graph;
 using ShaderModuleAPI;
 
-namespace WLEShaderEditor.Model
+namespace WLEShaderEditor.Framework
 {
    class ProgramGraph
    {

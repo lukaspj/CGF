@@ -5,7 +5,7 @@ using ShaderModuleAPI;
 using WLEShaderEditor.Utility;
 using WLEShaderEditor.Variant;
 
-using WLEShaderEditor.Model;
+using WLEShaderEditor.Framework;
 using System.Collections.Generic;
 
 using System.Globalization;
@@ -65,7 +65,7 @@ namespace WLEShaderEditor
       private void CompileButton_Click(object sender, EventArgs e)
       {
          GraphModel model = new GraphModel(new FileDependencyParserStrategy(), new DelimiterSerializationStrategy(), (List<Node>)graphControl.Nodes);
-         Compilers.Compiler compiler = new Compilers.T3DPostFxCompiler();
+         Framework.Compiler compiler = new T3DPostFxCompiler();
          ShaderOutputInfo outInfo = new ShaderOutputInfo();
          outInfo.outputFilename = "compiledFile";
          outInfo.outputPath = "output/";
