@@ -8,7 +8,7 @@ Everyone is permitted to copy and distribute verbatim
 	not allowed.
 	
 				TERMS AND CONDITIONS
-				
+
 0. Definitions
 
 	"This License" refers to version 1.0 of WLE Shared
@@ -29,7 +29,7 @@ Everyone is permitted to copy and distribute verbatim
 	WinterleafEntertainment forums located at
 	<https://winterleafentertainment.com/Community/Forums.aspx>
 	
-	"the official repo" refers exclusively to the GitHub
+  "the official repo" refers exclusively to the GitHub
 	repository managed by the original author(s).
 	
 1. Usage
