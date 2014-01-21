@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{2DF50604-A51F-44D4-B8C4-238219B8AA20}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{4086EF93-194F-4E3F-808C-31AC86306636}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graph", "Source\Graph\Graph.csproj", "{E4CC63D8-127D-4BC9-80E0-CCB3E9DA06DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShaderModuleAPI", "Source\ShaderModuleAPI\ShaderModuleAPI.csproj", "{B36F6A99-BF75-47D5-A036-9BD4AF1762EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CGF", "Source\ShaderModuleAPI\CGF.csproj", "{B36F6A99-BF75-47D5-A036-9BD4AF1762EF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WLEShaderEditor", "Source\WLEShaderEditor\WLEShaderEditor.csproj", "{8944A37B-48E3-40A9-A47B-605CD82F98E9}"
 EndProject

@@ -123,9 +123,9 @@
       <Project>{E4CC63D8-127D-4BC9-80E0-CCB3E9DA06DC}</Project>
       <Name>Graph</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ShaderModuleAPI\ShaderModuleAPI.csproj">
+    <ProjectReference Include="..\ShaderModuleAPI\CGF.csproj">
       <Project>{B36F6A99-BF75-47D5-A036-9BD4AF1762EF}</Project>
-      <Name>ShaderModuleAPI</Name>
+      <Name>CGF</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

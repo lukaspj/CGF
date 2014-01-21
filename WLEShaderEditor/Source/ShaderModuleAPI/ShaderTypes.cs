@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShaderModuleAPI
+namespace CGF
 {
    public static class ShaderTypes
    {

@@ -50,9 +50,9 @@
       <Name>Graph</Name>
       <Private>False</Private>
     </ProjectReference>
-    <ProjectReference Include="..\..\ShaderModuleAPI\ShaderModuleAPI.csproj">
+    <ProjectReference Include="..\..\ShaderModuleAPI\CGF.csproj">
       <Project>{b36f6a99-bf75-47d5-a036-9bd4af1762ef}</Project>
-      <Name>ShaderModuleAPI</Name>
+      <Name>CGF</Name>
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>

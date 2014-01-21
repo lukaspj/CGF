@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
-using ShaderModuleAPI;
+using CGF;
 
-namespace ShaderModuleAPI.Utility
+namespace CGF.Utility
 {
    public static class HelperMethods
    {

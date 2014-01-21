@@ -1,7 +1,7 @@
 ﻿using System;
 using Graph;
 
-namespace ShaderModuleAPI
+namespace CGF
 {
     public interface IModule
     {
