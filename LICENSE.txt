@@ -1,5 +1,5 @@
         WLE SHARED SOURCE LICENSE
-			 version 1.0, 21 January 2014
+			 version 1.1, 21 January 2014
 
 Copyright (c) 2014 Winterleaf Entertainment L.L.C. 
 	- <https://winterleafentertainment.com>
@@ -11,12 +11,15 @@ Everyone is permitted to copy and distribute verbatim
 
 0. Definitions
 
-	"This License" refers to version 1.0 of WLE Shared
+	"This License" refers to version 1.1 of WLE Shared
 	Source License.
  
 	"The program", "the source", "the source code", "these
 	files", "this file" refers to any copyrightable work
 	licensed under this License.
+	
+	"The ouput", refers to any files generated through the
+	use of the compiled program ONLY.
  
 	"You" refers to the Licensee. The licensee could be a 
 	person or a organisation.
@@ -40,6 +43,9 @@ Everyone is permitted to copy and distribute verbatim
 	Usage by you of any work covered by this license should
 	not, directly or indirectly, enable its usage by any
 	other individual or organisation.
+	
+	The output does not fall under this license, the output
+	and all rights to the output belongs to you.
  
 2. Modifications
   
