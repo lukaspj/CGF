@@ -48,6 +48,7 @@
     <ProjectReference Include="..\..\CGF\CGF.csproj">
       <Project>{b36f6a99-bf75-47d5-a036-9bd4af1762ef}</Project>
       <Name>CGF</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\..\Graph\Graph.csproj">
       <Project>{e4cc63d8-127d-4bc9-80e0-ccb3e9da06dc}</Project>
@@ -57,6 +58,7 @@
     <ProjectReference Include="..\..\T3DHLSLAPI\T3DHLSLAPI.csproj">
       <Project>{520a434a-06cb-47fe-87d6-06c60bfe72c3}</Project>
       <Name>T3DHLSLAPI</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

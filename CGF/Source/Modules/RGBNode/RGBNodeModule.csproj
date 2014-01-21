@@ -49,6 +49,7 @@
     <ProjectReference Include="..\..\CGF\CGF.csproj">
       <Project>{b36f6a99-bf75-47d5-a036-9bd4af1762ef}</Project>
       <Name>CGF</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\..\Graph\Graph.csproj">
       <Project>{e4cc63d8-127d-4bc9-80e0-ccb3e9da06dc}</Project>

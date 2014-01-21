@@ -18,6 +18,7 @@ namespace PostFxUI
 
          Application.EnableVisualStyles();
          Application.SetCompatibleTextRenderingDefault(false);
+         Application.Run(new EditorWindow());
          Application.Run(new PostFxUIForm());
       }
    }

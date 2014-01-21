@@ -1,4 +1,4 @@
-﻿namespace WLEShaderEditor
+﻿namespace PostFxUI
 {
    partial class EditorWindow
    {

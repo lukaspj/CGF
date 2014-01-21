@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
 
-namespace WLEShaderEditor
+namespace PostFxUI
 {
    public partial class EditorWindow : Form
    {
