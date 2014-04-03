@@ -1,6 +1,8 @@
 Compilable Graph Format (CGF)
 ===============
 
+####Notice: This is still a WIP####
+
 CGF is a visual coding/scripting system, used to draw your code in a visual graph format and then compile it to a file.
 My first project will be compiling .hlsl files, which I'm already moving steadily forward with.
 
